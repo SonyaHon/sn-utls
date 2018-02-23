@@ -1,12 +1,15 @@
 const SNObject = require('./src/sn_object');
 
-let a = new SNObject({
-    _ctor: (s) => {
-        this.set('prop1', s);
+let a = SNObject.Create({
+    _ctor: function(message) {
+        this.set('prop1', message);
     },
     _props: {
         prop1: {}
     }
-}, "Hello World!");
+}, 'Hello World!');
 
-console.log(a.get('prop1'));
+let test = a.get('prop1');
+console.log(test);
+a.set('prop1', 'But Cruel World!');
+console.log(test);
